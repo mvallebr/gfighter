@@ -1,0 +1,1624 @@
+object frmMain: TfrmMain
+  Left = 180
+  Top = 113
+  Width = 672
+  Height = 486
+  ActiveControl = PageControl1
+  Caption = 'PCFighter Sprite Editor'
+  Color = clBackground
+  Icon.Data = {
+    0000010001002020100000000000E80200001600000028000000200000004000
+    0000010004000000000080020000000000000000000000000000000000000000
+    000000008000008000000080800080000000800080008080000080808000C0C0
+    C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000
+    0000000000000000000000000000000000000000BBBBBBBB0000000000000000
+    00000BBBBBBBBBBBBBB00000000000000000BBBBBBBBBBBBBBBB000000000000
+    00BBBBBBBBBBBBBBBBBBBB00000000000BBBBBBBBB0000BBBBBBBBB000000000
+    BBBBBBBBB099990BBBBBBBBB00000000BBBBBBBB09999990BBBBBBBB0000000B
+    BBBBBBB0900000090BBBBBBBB00000BBBBBBBB000BBBBBB000BBBBBBBB0000BB
+    BBBBB00BBBBBBBBBB00BBBBBBB0000BBBBBBB0BBBBBBBBBBBB0BBBBBBB000BBB
+    BBBB0BBBBBBBBBBBBBB0BBBBBBB00BBB0000BBBBBBBBBBBBBBBB0000BBB00BBB
+    BBB0BBBBBBBBBBBBBBBB0BBBBBB00BBBBBBB0BBBBBBBBBBBBBB0BBBBBBB00BBB
+    BBBB0BBBBBBBBBBBBBB0BBBBBBB00BBBBBBBBBB00BBBBBB00BBBBBBBBBB00BBB
+    BBBBBB0000BBBB0000BBBBBBBBB00BBBBBBBBB0000BBBB0000BBBBBBBBB000BB
+    BBBBBB0000BBBB0000BBBBBBBB0000BBBBBBBB0000BBBB0000BBBBBBBB0000BB
+    BBBBBB0000BBBB0000BBBBBBBB00000BBBBBBBB00BBBBBB00BBBBBBBB0000000
+    BBBBBBBBBBBBBBBBBBBBBBBB00000000BBBBBBBBBBBBBBBBBBBBBBBB00000000
+    0BBBBBBBBBBBBBBBBBBBBBB00000000000BBBBBBBBBBBBBBBBBBBB0000000000
+    0000BBBBBBBBBBBBBBBB00000000000000000BBBBBBBBBBBBBB0000000000000
+    00000000BBBBBBBB00000000000000000000000000000000000000000000FFF0
+    0FFFFF8001FFFE00007FFC00003FF800001FF000000FE0000007C0000003C000
+    0003800000018000000180000001000000000000000000000000000000000000
+    0000000000000000000000000000800000018000000180000001C0000003C000
+    0003E0000007F000000FF800001FFC00003FFE00007FFF8001FFFFF00FFF}
+  Menu = MainMenu1
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  TextWidth = 6
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 672
+    Height = 463
+    ActivePage = TabSheet5
+    Align = alClient
+    Style = tsFlatButtons
+    TabOrder = 0
+    object TabSheet5: TTabSheet
+      Caption = 'Sprite info'
+      ImageIndex = 4
+      object edtBaseFolder: TEdit
+        Left = 16
+        Top = 24
+        Width = 353
+        Height = 21
+        ReadOnly = True
+        TabOrder = 0
+        Text = 'edtBaseFolder'
+      end
+      object Label1: TLabel
+        Left = 16
+        Top = 8
+        Width = 56
+        Height = 13
+        Caption = 'Base folder:'
+      end
+      object dtvBaseFolder: TDirectoryTreeView
+        Left = 16
+        Top = 48
+        Width = 353
+        Height = 361
+        TabOrder = 2
+        OnChange = dtvBaseFolderChange
+      end
+      object GroupBox1: TGroupBox
+        Left = 392
+        Top = 24
+        Width = 257
+        Height = 105
+        Caption = 'Operations:'
+        TabOrder = 3
+        object btnLoadFile: TButton
+          Left = 16
+          Top = 24
+          Width = 225
+          Height = 33
+          Caption = 'Open from folder'
+          Font.Color = clBlack
+          Font.Height = 11
+          Font.Name = 'MS Sans Serif'
+          Font.Pitch = fpVariable
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 0
+          OnClick = btnLoadFileClick
+        end
+        object btnSaveFile: TButton
+          Left = 16
+          Top = 64
+          Width = 225
+          Height = 33
+          Caption = 'Save on folder'
+          Font.Color = clBlack
+          Font.Height = 11
+          Font.Name = 'MS Sans Serif'
+          Font.Pitch = fpVariable
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 1
+          OnClick = btnSaveFileClick
+        end
+      end
+    end
+    object TabSheet1: TTabSheet
+      Caption = 'Actions'
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 177
+        Height = 429
+        Align = alLeft
+        TabOrder = 0
+        object ToolBar1: TToolBar
+          Left = 1
+          Top = 1
+          Width = 175
+          Height = 43
+          AutoSize = True
+          ButtonHeight = 39
+          ButtonWidth = 39
+          Caption = 'ToolBar1'
+          Images = imgStdButtons
+          TabOrder = 0
+          object ToolButton1: TToolButton
+            Left = 1
+            Top = 4
+            Height = 39
+            AutoSize = True
+            Caption = 'ToolButton1'
+            ImageIndex = 0
+            OnClick = ToolButton1Click
+          end
+          object ToolButton2: TToolButton
+            Left = 40
+            Top = 4
+            Height = 39
+            Caption = 'ToolButton2'
+            ImageIndex = 1
+            OnClick = ToolButton2Click
+          end
+        end
+        object lstActions: TListBox
+          Left = 1
+          Top = 44
+          Width = 175
+          Height = 384
+          Align = alClient
+          TabOrder = 1
+          OnClick = lstActionsClick
+          OnDblClick = lstActionsDblClick
+        end
+      end
+      object Panel2: TPanel
+        Left = 177
+        Top = 0
+        Width = 487
+        Height = 429
+        Align = alClient
+        TabOrder = 1
+        object Splitter1: TSplitter
+          Left = 273
+          Top = 1
+          Height = 381
+        end
+        object Panel3: TPanel
+          Left = 1
+          Top = 382
+          Width = 485
+          Height = 46
+          Align = alBottom
+          BevelOuter = bvLowered
+          TabOrder = 0
+          object ToolBar2: TToolBar
+            Left = 405
+            Top = 1
+            Width = 79
+            Height = 44
+            Align = alRight
+            AutoSize = True
+            ButtonHeight = 39
+            ButtonWidth = 39
+            Caption = 'ToolBar1'
+            Images = imgStdButtons
+            TabOrder = 0
+            object ToolButton3: TToolButton
+              Left = 1
+              Top = 4
+              Height = 39
+              AutoSize = True
+              Caption = 'ToolButton1'
+              ImageIndex = 0
+              OnClick = ToolButton3Click
+            end
+            object ToolButton4: TToolButton
+              Left = 40
+              Top = 4
+              Height = 39
+              Caption = 'ToolButton2'
+              ImageIndex = 1
+              OnClick = ToolButton4Click
+            end
+          end
+          object lstFrames: TListBox
+            Left = 1
+            Top = 1
+            Width = 404
+            Height = 44
+            ColumnLayout = llFitToWidth
+            Align = alClient
+            TabOrder = 1
+            OnClick = lstFramesClick
+          end
+        end
+        object Panel4: TPanel
+          Left = 1
+          Top = 1
+          Width = 272
+          Height = 381
+          Align = alLeft
+          TabOrder = 1
+          object Splitter2: TSplitter
+            Left = 1
+            Top = 57
+            Width = 270
+            Height = 3
+            Cursor = crVSplit
+            Align = alTop
+          end
+          object Panel6: TPanel
+            Left = 1
+            Top = 1
+            Width = 270
+            Height = 56
+            Align = alTop
+            BevelOuter = bvLowered
+            TabOrder = 0
+            object ToolBar4: TToolBar
+              Left = 190
+              Top = 1
+              Width = 79
+              Height = 54
+              Align = alRight
+              AutoSize = True
+              ButtonHeight = 39
+              ButtonWidth = 39
+              Caption = 'ToolBar1'
+              Images = imgStdButtons
+              TabOrder = 0
+              object ToolButton5: TToolButton
+                Left = 1
+                Top = 4
+                Height = 39
+                AutoSize = True
+                Caption = 'ToolButton1'
+                ImageIndex = 0
+                OnClick = ToolButton5Click
+              end
+              object ToolButton6: TToolButton
+                Left = 40
+                Top = 4
+                Height = 39
+                Caption = 'ToolButton2'
+                ImageIndex = 1
+                OnClick = ToolButton6Click
+              end
+            end
+            object lstPolys: TListBox
+              Left = 1
+              Top = 1
+              Width = 189
+              Height = 54
+              Align = alClient
+              TabOrder = 1
+              OnClick = lstPolysClick
+            end
+          end
+          object Panel13: TPanel
+            Left = 1
+            Top = 60
+            Width = 270
+            Height = 320
+            Align = alClient
+            TabOrder = 1
+            object Panel14: TPanel
+              Left = 1
+              Top = 17
+              Width = 268
+              Height = 16
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 0
+              object chkShowPolys: TCheckBox
+                Left = 8
+                Top = 0
+                Width = 101
+                Height = 15
+                Caption = 'Show Polys'
+                Checked = True
+                State = cbChecked
+                TabOrder = 0
+                OnClick = chkShowPolysClick
+              end
+            end
+            object ScrollBox1: TScrollBox
+              Left = 1
+              Top = 33
+              Width = 268
+              Height = 286
+              VertScrollBar.Range = 193
+              HorzScrollBar.Range = 220
+              Align = alClient
+              TabOrder = 1
+              object imgFrame: TImage
+                Left = 0
+                Top = 0
+                Width = 220
+                Height = 193
+                AutoSize = True
+                Center = True
+                Transparent = True
+                OnDragOver = imgFrameDragOver
+              end
+              object imgCenter: TShape
+                Left = 104
+                Top = 72
+                Width = 17
+                Height = 17
+                Brush.Color = clBlack
+                Brush.Style = bsDiagCross
+                Pen.Color = clBlue
+                Pen.Mode = pmNotXor
+                Pen.Style = psClear
+                Shape = stCircle
+              end
+              object P1: TShape
+                Tag = 1
+                Left = 16
+                Top = 8
+                Width = 17
+                Height = 17
+                Cursor = crCross
+                Brush.Color = clBlack
+                DragMode = dmAutomatic
+                Shape = stCircle
+                OnDragOver = P1DragOver
+                OnEndDrag = P1EndDrag
+              end
+              object P2: TShape
+                Tag = 2
+                Left = 32
+                Top = 24
+                Width = 17
+                Height = 17
+                Cursor = crCross
+                Brush.Color = clBlack
+                DragMode = dmAutomatic
+                Shape = stCircle
+                OnDragOver = P1DragOver
+                OnEndDrag = P1EndDrag
+              end
+              object P3: TShape
+                Tag = 3
+                Left = 40
+                Top = 48
+                Width = 17
+                Height = 17
+                Cursor = crCross
+                Brush.Color = clBlack
+                DragMode = dmAutomatic
+                Shape = stCircle
+                OnDragOver = P1DragOver
+                OnEndDrag = P1EndDrag
+              end
+              object P4: TShape
+                Tag = 4
+                Left = 56
+                Top = 64
+                Width = 17
+                Height = 17
+                Cursor = crCross
+                Brush.Color = clBlack
+                DragMode = dmAutomatic
+                Shape = stCircle
+                OnDragOver = P1DragOver
+                OnEndDrag = P1EndDrag
+              end
+            end
+            object Panel15: TPanel
+              Left = 1
+              Top = 1
+              Width = 268
+              Height = 16
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 2
+              object chkFrameCenter: TCheckBox
+                Left = 8
+                Top = 0
+                Width = 101
+                Height = 15
+                Caption = 'Show Center'
+                Checked = True
+                State = cbChecked
+                TabOrder = 0
+                OnClick = chkFrameCenterClick
+              end
+            end
+          end
+        end
+        object Panel5: TPanel
+          Left = 276
+          Top = 1
+          Width = 210
+          Height = 381
+          Align = alClient
+          TabOrder = 2
+          object pgProperties: TPageControl
+            Left = 1
+            Top = 1
+            Width = 208
+            Height = 379
+            ActivePage = tabAction
+            Align = alClient
+            MultiLine = True
+            Style = tsButtons
+            TabOrder = 0
+            object tabAction: TTabSheet
+              Caption = 'Action Properties'
+              object Label2: TLabel
+                Left = 6
+                Top = 16
+                Width = 58
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Next Action:'
+                Masked = True
+                Transparent = True
+              end
+              object lbTrigger: TLabel
+                Left = 28
+                Top = 40
+                Width = 36
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Trigger:'
+                Masked = True
+                Transparent = True
+              end
+              object edtActionTrigger: TEdit
+                Left = 73
+                Top = 32
+                Width = 121
+                Height = 21
+                TabOrder = 2
+              end
+              object edtNextAction: TEdit
+                Left = 73
+                Top = 8
+                Width = 121
+                Height = 21
+                TabOrder = 3
+              end
+              object edtActionSoundFile: TEdit
+                Left = 73
+                Top = 56
+                Width = 121
+                Height = 21
+                TabOrder = 4
+              end
+              object Label3: TLabel
+                Left = 14
+                Top = 64
+                Width = 50
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Sound file:'
+                Masked = True
+                Transparent = True
+              end
+              object Button3: TButton
+                Left = 8
+                Top = 104
+                Width = 185
+                Height = 25
+                Caption = 'Test this movement'
+                TabOrder = 6
+                OnClick = Button3Click
+              end
+            end
+            object tabFrame: TTabSheet
+              Caption = 'Frame Properties'
+              ImageIndex = 1
+              object lb4: TLabel
+                Left = 36
+                Top = 16
+                Width = 28
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'State:'
+                Masked = True
+                Transparent = True
+              end
+              object edtFrameState: TEdit
+                Left = 72
+                Top = 8
+                Width = 121
+                Height = 21
+                TabOrder = 1
+              end
+              object lb3: TLabel
+                Left = 16
+                Top = 40
+                Width = 48
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Image file:'
+                Masked = True
+                Transparent = True
+              end
+              object lb2: TLabel
+                Left = 20
+                Top = 64
+                Width = 44
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Center X:'
+                Masked = True
+                Transparent = True
+              end
+              object edtFrameCenterX: TEdit
+                Left = 72
+                Top = 56
+                Width = 121
+                Height = 21
+                TabOrder = 4
+              end
+              object lb1: TLabel
+                Left = 20
+                Top = 88
+                Width = 44
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Center Y:'
+                Masked = True
+                Transparent = True
+              end
+              object edtFrameCenterY: TEdit
+                Left = 72
+                Top = 80
+                Width = 121
+                Height = 21
+                TabOrder = 6
+              end
+              object btnCenter: TButton
+                Left = 72
+                Top = 112
+                Width = 121
+                Height = 33
+                Caption = 'Encontrar centro'
+                TabOrder = 7
+                OnClick = btnCenterClick
+              end
+              object edtFrameImageFile: TFileEdit
+                Left = 72
+                Top = 32
+                Width = 121
+                Height = 21
+                Directory.AutoUpdate = True
+                Directory.IncludeParentDir = False
+                Directory.Location = 'E:\marcelo\projetos\Prog\C\gfighter\sprites\sprite_editor\'
+                Directory.FileType = [ftSystem, ftNormal]
+                Directory.FileMask = '*.png'
+                TabOrder = 8
+                OnReturnPressed = edtFrameImageFileReturnPressed
+              end
+            end
+            object tabPoly: TTabSheet
+              Caption = 'Poly Properties'
+              ImageIndex = 2
+              object Label4: TLabel
+                Left = 30
+                Top = 40
+                Width = 34
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Priority:'
+                Masked = True
+                Transparent = True
+              end
+              object edtPolyPriority: TSpinEdit
+                Left = 72
+                Top = 32
+                Width = 121
+                Height = 21
+                TabOrder = 1
+                OnChanged = edtPolyP1XChanged
+              end
+              object edtPolyP1X: TSpinEdit
+                Left = 71
+                Top = 56
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 2
+                OnChanged = edtPolyP1XChanged
+              end
+              object Label5: TLabel
+                Left = 41
+                Top = 64
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P1X:'
+                Masked = True
+                Transparent = True
+              end
+              object edtPolyP1Y: TSpinEdit
+                Left = 71
+                Top = 80
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 4
+                OnChanged = edtPolyP1XChanged
+              end
+              object Label6: TLabel
+                Left = 41
+                Top = 88
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P1Y:'
+                Masked = True
+                Transparent = True
+              end
+              object edtPolyP2X: TSpinEdit
+                Left = 71
+                Top = 104
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 6
+                OnChanged = edtPolyP1XChanged
+              end
+              object Label7: TLabel
+                Left = 41
+                Top = 112
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P2X:'
+                Masked = True
+                Transparent = True
+              end
+              object edtPolyP2Y: TSpinEdit
+                Left = 71
+                Top = 128
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 8
+                OnChanged = edtPolyP1XChanged
+              end
+              object Label8: TLabel
+                Left = 41
+                Top = 136
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P2Y:'
+                Masked = True
+                Transparent = True
+              end
+              object edtPolyP4Y: TSpinEdit
+                Left = 71
+                Top = 224
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 10
+                OnChanged = edtPolyP1XChanged
+              end
+              object Label9: TLabel
+                Left = 41
+                Top = 232
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P4Y:'
+                Masked = True
+                Transparent = True
+              end
+              object edtPolyP4X: TSpinEdit
+                Left = 71
+                Top = 200
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 12
+                OnChanged = edtPolyP1XChanged
+              end
+              object edtPolyP3Y: TSpinEdit
+                Left = 71
+                Top = 176
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 13
+                OnChanged = edtPolyP1XChanged
+              end
+              object edtPolyP3X: TSpinEdit
+                Left = 71
+                Top = 152
+                Width = 121
+                Height = 21
+                Max = 10000
+                TabOrder = 14
+                OnChanged = edtPolyP1XChanged
+              end
+              object Label10: TLabel
+                Left = 41
+                Top = 160
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P3X:'
+                Masked = True
+                Transparent = True
+              end
+              object Label11: TLabel
+                Left = 41
+                Top = 184
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P3Y:'
+                Masked = True
+                Transparent = True
+              end
+              object Label12: TLabel
+                Left = 41
+                Top = 208
+                Width = 23
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'P4X:'
+                Masked = True
+                Transparent = True
+              end
+              object Label13: TLabel
+                Left = 28
+                Top = 16
+                Width = 36
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'Trigger:'
+                Masked = True
+                Transparent = True
+              end
+              object edtPolyTrigger: TEdit
+                Left = 71
+                Top = 8
+                Width = 121
+                Height = 21
+                TabOrder = 19
+              end
+            end
+          end
+        end
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = 'Trajectories'
+      ImageIndex = 5
+      object Panel16: TPanel
+        Left = 0
+        Top = 0
+        Width = 177
+        Height = 429
+        Align = alLeft
+        TabOrder = 0
+        object ToolBar3: TToolBar
+          Left = 1
+          Top = 1
+          Width = 175
+          Height = 43
+          AutoSize = True
+          ButtonHeight = 39
+          ButtonWidth = 39
+          Caption = 'ToolBar1'
+          Images = imgStdButtons
+          TabOrder = 0
+          object ToolButton15: TToolButton
+            Left = 1
+            Top = 4
+            Height = 39
+            AutoSize = True
+            Caption = 'ToolButton1'
+            ImageIndex = 0
+            OnClick = ToolButton15Click
+          end
+          object ToolButton16: TToolButton
+            Left = 40
+            Top = 4
+            Height = 39
+            Caption = 'ToolButton2'
+            ImageIndex = 1
+            OnClick = ToolButton16Click
+          end
+        end
+        object lstTrajectories: TListBox
+          Left = 1
+          Top = 44
+          Width = 175
+          Height = 384
+          Align = alClient
+          TabOrder = 1
+          OnClick = lstTrajectoriesClick
+          OnDblClick = lstTrajectoriesDblClick
+        end
+      end
+      object Panel17: TPanel
+        Left = 177
+        Top = 0
+        Width = 487
+        Height = 429
+        Align = alClient
+        TabOrder = 1
+        object Panel18: TPanel
+          Left = 1
+          Top = 384
+          Width = 485
+          Height = 44
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 0
+          object ToolBar7: TToolBar
+            Left = 406
+            Top = 0
+            Width = 79
+            Height = 44
+            Align = alRight
+            AutoSize = True
+            ButtonHeight = 39
+            ButtonWidth = 39
+            Caption = 'ToolBar1'
+            Images = imgStdButtons
+            TabOrder = 0
+            object ToolButton17: TToolButton
+              Left = 1
+              Top = 4
+              Height = 39
+              AutoSize = True
+              Caption = 'ToolButton1'
+              ImageIndex = 0
+              OnClick = ToolButton17Click
+            end
+            object ToolButton18: TToolButton
+              Left = 40
+              Top = 4
+              Height = 39
+              Caption = 'ToolButton2'
+              ImageIndex = 1
+              OnClick = ToolButton18Click
+            end
+          end
+          object lstPoints: TListBox
+            Left = 0
+            Top = 0
+            Width = 406
+            Height = 44
+            ColumnLayout = llFitToWidth
+            Align = alClient
+            TabOrder = 1
+            OnClick = lstPointsClick
+          end
+        end
+        object Panel19: TPanel
+          Left = 1
+          Top = 1
+          Width = 485
+          Height = 383
+          Align = alClient
+          TabOrder = 1
+          object Panel20: TPanel
+            Left = 1
+            Top = 1
+            Width = 483
+            Height = 381
+            Align = alClient
+            TabOrder = 0
+            object Panel27: TPanel
+              Left = 1
+              Top = 1
+              Width = 481
+              Height = 379
+              Align = alClient
+              TabOrder = 0
+              object Splitter4: TSplitter
+                Left = 341
+                Top = 1
+                Height = 377
+                Align = alRight
+              end
+              object pgTrajs: TPageControl
+                Left = 344
+                Top = 1
+                Width = 136
+                Height = 377
+                ActivePage = tabTraj
+                Align = alRight
+                MultiLine = True
+                Style = tsButtons
+                TabOrder = 0
+                object tabTraj: TTabSheet
+                  Caption = 'Trajectory Properties'
+                  ImageIndex = 2
+                  object edtTrajWidth: TSpinEdit
+                    Left = 57
+                    Top = 8
+                    Width = 73
+                    Height = 21
+                    Max = 10000
+                    TabOrder = 0
+                    OnChanged = edtTrajWidthChanged
+                  end
+                  object Label22: TLabel
+                    Left = 25
+                    Top = 16
+                    Width = 31
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'Width:'
+                    Masked = True
+                    Transparent = True
+                  end
+                  object edtTrajHeight: TSpinEdit
+                    Left = 57
+                    Top = 32
+                    Width = 73
+                    Height = 21
+                    Max = 10000
+                    TabOrder = 2
+                    OnChanged = edtTrajHeightChanged
+                  end
+                  object Label23: TLabel
+                    Left = 22
+                    Top = 40
+                    Width = 34
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'Height:'
+                    Masked = True
+                    Transparent = True
+                  end
+                  object Label16: TLabel
+                    Left = 20
+                    Top = 64
+                    Width = 36
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'Trigger:'
+                    Masked = True
+                    Transparent = True
+                  end
+                  object edtTrajTrigger: TEdit
+                    Left = 57
+                    Top = 56
+                    Width = 73
+                    Height = 21
+                    TabOrder = 5
+                    OnChange = edtTrajTriggerChange
+                  end
+                  object edtNextTraj: TEdit
+                    Left = 58
+                    Top = 82
+                    Width = 73
+                    Height = 21
+                    TabOrder = 6
+                    OnChange = edtNextTrajChange
+                  end
+                  object Label20: TLabel
+                    Left = 7
+                    Top = 88
+                    Width = 49
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'Next Traj.:'
+                    Masked = True
+                    Transparent = True
+                  end
+                end
+                object tabTrajPoint: TTabSheet
+                  Caption = 'Point Properties'
+                  ImageIndex = 1
+                  object Label14: TLabel
+                    Left = 38
+                    Top = 16
+                    Width = 17
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'CX:'
+                    Masked = True
+                    Transparent = True
+                  end
+                  object edtTrajCX: TSpinEdit
+                    Left = 56
+                    Top = 8
+                    Width = 73
+                    Height = 21
+                    Max = 10000
+                    TabOrder = 1
+                    OnChanged = edtTrajCXChanged
+                  end
+                  object edtTrajCY: TSpinEdit
+                    Left = 56
+                    Top = 32
+                    Width = 73
+                    Height = 21
+                    Max = 10000
+                    TabOrder = 2
+                    OnChanged = edtTrajCYChanged
+                  end
+                  object Label15: TLabel
+                    Left = 38
+                    Top = 40
+                    Width = 17
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'CY:'
+                    Masked = True
+                    Transparent = True
+                  end
+                  object edtTrajTime: TSpinEdit
+                    Left = 56
+                    Top = 80
+                    Width = 73
+                    Height = 21
+                    Max = 10000
+                    Min = 1
+                    TabOrder = 4
+                    Value = 1
+                    OnChanged = edtTrajHeightChanged
+                  end
+                  object Label17: TLabel
+                    Left = -2
+                    Top = 88
+                    Width = 57
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'Time (Frms):'
+                    Masked = True
+                    Transparent = True
+                  end
+                  object Label18: TLabel
+                    Left = 11
+                    Top = 64
+                    Width = 44
+                    Height = 13
+                    Alignment = taRightJustify
+                    Caption = 'AFrames:'
+                    Masked = True
+                    Transparent = True
+                  end
+                  object edtTrajAFrames: TSpinEdit
+                    Left = 56
+                    Top = 56
+                    Width = 73
+                    Height = 21
+                    Max = 10000
+                    Min = 1
+                    TabOrder = 7
+                    Value = 1
+                    OnChanged = edtTrajWidthChanged
+                  end
+                end
+              end
+              object scrollTraj: TScrollBox
+                Left = 1
+                Top = 1
+                Width = 340
+                Height = 377
+                VertScrollBar.Range = 200
+                HorzScrollBar.Range = 300
+                Align = alClient
+                TabOrder = 1
+                object imgTrajectory: TImage
+                  Left = 0
+                  Top = 0
+                  Width = 300
+                  Height = 200
+                  Center = True
+                  OnDragOver = imgTrajectoryDragOver
+                end
+                object PTraj: TShape
+                  Tag = 1
+                  Left = 16
+                  Top = 8
+                  Width = 17
+                  Height = 17
+                  Cursor = crCross
+                  Brush.Color = clBlack
+                  DragMode = dmAutomatic
+                  Shape = stCircle
+                  OnDragOver = PTrajDragOver
+                  OnEndDrag = PTrajEndDrag
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Inputs'
+      ImageIndex = 1
+      object Panel7: TPanel
+        Left = 0
+        Top = 0
+        Width = 177
+        Height = 429
+        Align = alLeft
+        TabOrder = 0
+        object ToolBar5: TToolBar
+          Left = 1
+          Top = 1
+          Width = 175
+          Height = 43
+          AutoSize = True
+          ButtonHeight = 39
+          ButtonWidth = 39
+          Caption = 'ToolBar1'
+          Images = imgStdButtons
+          TabOrder = 0
+          object ToolButton7: TToolButton
+            Left = 1
+            Top = 4
+            Height = 39
+            AutoSize = True
+            Caption = 'ToolButton1'
+            ImageIndex = 0
+            OnClick = ToolButton7Click
+          end
+          object ToolButton8: TToolButton
+            Left = 40
+            Top = 4
+            Height = 39
+            Caption = 'ToolButton2'
+            ImageIndex = 1
+            OnClick = ToolButton8Click
+          end
+        end
+        object lstInputs: TListBox
+          Left = 1
+          Top = 44
+          Width = 175
+          Height = 384
+          Align = alClient
+          TabOrder = 1
+          OnClick = lstInputsClick
+          OnDblClick = lstInputsDblClick
+        end
+      end
+      object Panel8: TPanel
+        Left = 177
+        Top = 0
+        Width = 487
+        Height = 429
+        Align = alClient
+        TabOrder = 1
+        object Panel12: TPanel
+          Left = 1
+          Top = 1
+          Width = 485
+          Height = 427
+          Align = alClient
+          TabOrder = 0
+          object grdInputs: TStringGrid
+            Left = 1
+            Top = 25
+            Width = 483
+            Height = 401
+            Align = alClient
+            ColCount = 11
+            DefaultColWidth = 42
+            DefaultRowHeight = 20
+            RowCount = 17
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goAlwaysShowEditor]
+            TabOrder = 0
+            OnDrawCell = grdInputsDrawCell
+            OnSetEditText = grdInputsSetEditText
+          end
+          object Panel9: TPanel
+            Left = 1
+            Top = 1
+            Width = 483
+            Height = 24
+            Align = alTop
+            TabOrder = 1
+            object edtInputTrigger: TEdit
+              Left = 72
+              Top = 0
+              Width = 161
+              Height = 21
+              TabOrder = 0
+            end
+            object Label19: TLabel
+              Left = 1
+              Top = 1
+              Width = 64
+              Height = 22
+              Align = alLeft
+              Alignment = taRightJustify
+              AutoSize = False
+              Caption = 'OnPress:'
+            end
+            object edtInputTrigger2: TEdit
+              Left = 320
+              Top = 3
+              Width = 161
+              Height = 21
+              TabOrder = 2
+            end
+            object Label21: TLabel
+              Left = 250
+              Top = 1
+              Width = 64
+              Height = 22
+              Alignment = taRightJustify
+              AutoSize = False
+              Caption = 'OnRelease:'
+            end
+          end
+        end
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'States'
+      ImageIndex = 2
+      object Panel10: TPanel
+        Left = 0
+        Top = 0
+        Width = 177
+        Height = 429
+        Align = alLeft
+        TabOrder = 0
+        object ToolBar8: TToolBar
+          Left = 1
+          Top = 1
+          Width = 175
+          Height = 43
+          AutoSize = True
+          ButtonHeight = 39
+          ButtonWidth = 39
+          Caption = 'ToolBar1'
+          Images = imgStdButtons
+          TabOrder = 0
+          object ToolButton11: TToolButton
+            Left = 1
+            Top = 4
+            Height = 39
+            AutoSize = True
+            Caption = 'ToolButton1'
+            ImageIndex = 0
+            OnClick = ToolButton11Click
+          end
+          object ToolButton12: TToolButton
+            Left = 40
+            Top = 4
+            Height = 39
+            Caption = 'ToolButton2'
+            ImageIndex = 1
+            OnClick = ToolButton12Click
+          end
+        end
+        object lstStates: TListBox
+          Left = 1
+          Top = 44
+          Width = 175
+          Height = 384
+          Align = alClient
+          TabOrder = 1
+        end
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'Triggers'
+      ImageIndex = 3
+      object Panel11: TPanel
+        Left = 0
+        Top = 0
+        Width = 177
+        Height = 429
+        Align = alLeft
+        TabOrder = 0
+        object ToolBar9: TToolBar
+          Left = 1
+          Top = 1
+          Width = 175
+          Height = 43
+          AutoSize = True
+          ButtonHeight = 39
+          ButtonWidth = 39
+          Caption = 'ToolBar1'
+          Images = imgStdButtons
+          TabOrder = 0
+          object ToolButton13: TToolButton
+            Left = 1
+            Top = 4
+            Height = 39
+            AutoSize = True
+            Caption = 'ToolButton1'
+            ImageIndex = 0
+            OnClick = ToolButton13Click
+          end
+          object ToolButton14: TToolButton
+            Left = 40
+            Top = 4
+            Height = 39
+            Caption = 'ToolButton2'
+            ImageIndex = 1
+            OnClick = ToolButton14Click
+          end
+        end
+        object lstTriggers: TListBox
+          Left = 1
+          Top = 44
+          Width = 175
+          Height = 384
+          Align = alClient
+          TabOrder = 1
+          OnClick = lstTriggersClick
+          OnDblClick = lstTriggersDblClick
+        end
+      end
+      object Panel21: TPanel
+        Left = 177
+        Top = 0
+        Width = 487
+        Height = 429
+        Align = alClient
+        TabOrder = 1
+        object edtTrigger: TMemo
+          Left = 1
+          Top = 14
+          Width = 485
+          Height = 401
+          Align = alClient
+          ScrollBars = ssAutoVertical
+          TabOrder = 0
+          WantTabs = True
+        end
+        object lbTriggerName: TLabel
+          Left = 1
+          Top = 1
+          Width = 485
+          Height = 13
+          Align = alTop
+          Caption = 'int OnTrigger(trigger_data *data) {'
+          Color = clWhite
+          ParentColor = False
+        end
+        object Label24: TLabel
+          Left = 1
+          Top = 415
+          Width = 485
+          Height = 13
+          Align = alBottom
+          Caption = '}'
+          Color = clWhite
+          ParentColor = False
+        end
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 480
+    object Sprite1: TMenuItem
+      Caption = 'Sprite'
+      object Exit1: TMenuItem
+        Caption = 'E&xit'
+        OnClick = Exit1Click
+      end
+    end
+    object Edit1: TMenuItem
+      Caption = '&Edit'
+      object Refresh1: TMenuItem
+        Caption = '&Refresh'
+        ShortCut = 4148
+        OnClick = Refresh1Click
+      end
+    end
+    object Help1: TMenuItem
+      Caption = 'Help'
+      object About1: TMenuItem
+        Caption = 'About'
+      end
+    end
+  end
+  object imgStdButtons: TImageList
+    Height = 32
+    Width = 32
+    Left = 565
+    Top = 3
+    Bitmap = {
+      494D474C01000100200000002000000002000000424D36180000000000003600
+      0000280000004000000020000000010018000000000000180000120B0000120B
+      00000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6C3C6C6C3C6C6C3C6C6C3C6
+      C6C3C6C6C3C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000
+      000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF848284848284848284848284848284
+      848284C6C3C6C6C3C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF8482840000FF0000FF0000FF0000FF0000FF
+      848284848284C6C3C6C6C3C6C6C3C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF
+      0000FF848284848284848284C6C3C6C6C3C6FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF
+      0000FF0000FF0000FF848284848284C6C3C6C6C3C6FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFF0000FF0000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFFFF
+      0000FF0000FF0000FF0000FF848284848284C6C3C6FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF0000FF0000FF0000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFFFF
+      FFFFFF0000FF0000FF0000FF0000FF848284C6C3C6C6C3C6FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF0000FF0000FF0000FF0000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFF
+      FFFFFFFFFFFF0000FF0000FF0000FF848284848284C6C3C6FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000000000000000000000000000000000000000000000FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      00FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF848284C6C3C6FFFFFF
+      FFFFFFFFFFFF0000FF0000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      00FF0000FF0000FF8482840000FF0000FF0000FF0000FF0000FF848284C6C3C6
+      FFFFFFFFFFFFFFFFFF0000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      00FF0000FF0000FF848284C6C3C60000FF0000FF0000FF0000FF0000FF848284
+      C6C3C6FFFFFFFFFFFF0000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      00FF0000FF0000FF848284C6C3C6FFFFFF0000FF0000FF0000FF0000FF0000FF
+      848284C6C3C6FFFFFF0000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      00FF0000FF0000FF848284C6C3C6FFFFFFFFFFFF0000FF0000FF0000FF0000FF
+      0000FF848284C6C3C60000FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      00FF0000FF0000FF848284C6C3C6FFFFFFFFFFFFFFFFFF0000FF0000FF0000FF
+      0000FF0000FF8482840000FF0000FF0000FF848284FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+      00FF0000FF0000FF848284848284C6C3C6FFFFFFFFFFFFFFFFFF0000FF0000FF
+      0000FF0000FF0000FF0000FF0000FF0000FF848284FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF0000FF0000FF0000FF848284848284C6C3C6FFFFFFFFFFFFC6C3C60000FF
+      0000FF0000FF0000FF0000FF0000FF848284FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFF0000FF0000FF0000FF0000FF848284848284C6C3C6C6C3C6C6C3C6848284
+      0000FF0000FF0000FF0000FF0000FF848284FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFF0000FF0000FF0000FF0000FF848284848284848284848284848284
+      0000FF0000FF0000FF0000FFC6C3C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF
+      0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF0000FF0000FF
+      0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF0000FF0000FF0000FF0000FF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF424D3E010000000000003E0000002800000040000000
+      20000000010001000000000000010000120B0000120B00000200000002000000
+      FFFFFF0000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000003F0000001F0000007F800
+      00001000000FFE0000001000001FFF0000001000003FFF8000001000007E3F80
+      0000100000FE1FC00000100000FF0FC000FC1FE001FF8FC00000002001FFC7C0
+      0000002001FFE7C00000002001F7F7C00000002001F3FFC00000000001F1FF80
+      0000100001F8FF800000100000FCFF000000100000FFFF0000001000007FFE00
+      00001000003FF80000001000001FF000000000000007C0000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000}
+  end
+end

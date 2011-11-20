@@ -1,0 +1,16 @@
+<level> 
+	<screen>
+		<levelwidth>2000</levelwidth>
+		<levelheight>900</levelheight>
+		<width>800</width>
+		<height>600</height>
+		<virtualwidth>1200</virtualwidth>
+		<virtualheight>900</virtualheight>
+		<virtualToRealDistance>600</virtualToRealDistance>
+		<realToVirtualDistance>700</realToVirtualDistance>
+	</screen>
+	<background>
+		<layer x="0" y="0" z="1" file="l1.png"/>
+		<layer x="0" y="0" z="0.5" file="l2.png"/>
+	</background>
+</level>

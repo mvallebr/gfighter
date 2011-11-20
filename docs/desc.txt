@@ -1,0 +1,120 @@
+
+####################################################
+# - Detalhes gerais
+
+Resolution: 		640x480
+Minimun color depth:    16bpp
+
+####################################################
+# - Funcionamento do jogo
+
+
+####################################################
+# - Arquivos:
+----------------------------------------------------
+	1 - Arquivo de sprite.
+Define um sprite inteiro, com todos os movimentos, ações e
+propriedades. Um sprite, contúdo, não precisa ser necessariamente um
+personagem, pode ser um tiro ou uma mágia soltado por um personagem por
+exemplo.
+********************************
+Definição formal do arquivo:
+- Linha 1: Versão do arquivo
+- Linhas 2 a 10: reservado
+- Linha 11: Número de images = NIM
+- Linha 12: Número de sounds = NSND
+- Linha 13: Número de gfrects = NR
+- Linha 14: Número de frames  = NF
+- Linha 15: Número de ações   = NA
+- Linha 16: Número de inputsets  = NIL
+- Linha 17: Número de magics = NM
+- Linha 18: Número de inputs  = NI
+- Em seguida, NIM linhas com as imagens.
+image=filename ;filenamehflip
+	filename é a imagem quando o sprite está do lado esquerdo. 
+	filenamehflip é a imagem quando o sprite está do lado direito.
+	ATENÇÃO: O espaço após o nome do primeiro arquivo é obrigatório.
+- Em seguida, NSND linhas com os sons wav.
+sound=filename
+- Em seguida, NR linhas com os gfrects.
+gfrect=xlt,ylt;xrt,yrt;xlb,tlb;xrb,yrb; flip=xlt,ylt;xrt,yrt;xlb,tlb;xrb,yrb; powerlevel(1 a 100);index_action_win;index_action_lose;index_action_lose_much;index_action_die;defense
+	O primeiro conjunto de pontos é para quando o personagem está do lado
+	esquerdo e o segundo é para quando o mesmo está do lado direito.
+	Defense indica se na região especificada o personagem está defendendo
+	ou atacando. Powerlevel indica o nível de poder, que será comparado
+	com o nível de poder do retângulo que colide com esse. Caso seja
+	maior, a ação do sprite mudará para index_action_win. Caso seja menor,
+	mudará para index_action_lose. Caso seja menor por uma diferença maior
+	ou igual a 50, mudará para index_action_lose_much. Caso o usuário
+	tenha perdido toda a sua energia quando tendo colidido nesse
+	retângulo, sua ação mudará para index_action_die
+- Em seguida, vem cada frame no seguinte formato (sem espaços):
+frame=motion_x,motion_y;idimagem ;idsound ;indexrect1,indexrect2,...,indexrect10
+	motion_x é o tanto em pixels que o sprite irá mover-se (seu centro 
+	irá), em pixels, para perto do 	oponente.
+	motion_y  é o tanto em pixels que o sprite irá mover-se para cima.
+	Pode ser um número negativo.
+	O índice do arquivo de imagem é obrigatório e corresponde a uma imagem
+	tipo RGBA que deve estar no diretório do sprite. 
+	O arquivo de som segue a mesma regra, sendo um arquivo .wav, mas não é
+	obrigatório. 
+	ATENÇÃO: O espaço após os ids de arquivo (imagem e som) são obrigatórios.
+- Em seguida, vem o 2*NA linhas com as ações, descritas da seguinte forma:
+linha 1: action=next_action_if_jump;next_action_if_on_ground;input_level;NAF;
+linha 2: index_fram1,index_frame2...,index_frameNAF
+	next_action é a ação a ser executada quando essa ação terminar. Pode
+	ser ela mesma. 
+	InputLevel é um inteiro de 0 até 100 que indica se a ação pode ser
+	interrompida quando um input é acionado. Se o inputlevel da ação for
+	menor que o level do input, será possível.
+- Em seguida, vem NIL linhas com os InputLevels (níveis de input).
+	As linhas são da seguinte forma:
+inputset=teclas1,teclas2,teclas3,teclas4,teclas5,teclas6,teclas7
+	teclas# é um número inteiro de 32 bits, sendo que cada bit corresponde
+	ao pressionamente de uma tecla em específico. Quando o jogo está
+	rodando, ele irá acionar o input correspondente a esse input set
+	somente se os conjuntos de teclas ocorrerem em sequência (tecla 7,
+	depois tecla6, depois tecla5, depois tecla4...). Se um conjunto for
+	setado para zero, os seguintes são ignorados (ex.: se tecla3 é zero,
+	teclas 4 a 7 são ignoradas).
+- Em seguida, vem NM linhas descrevendo as magias.
+	As linhas são da seguinte forma:
+magic="sprite_magic" ;sprite_magic_action;magic_pos_x;magic_pos_y
+	O sprite sprite_magic será criado na tela na
+	posição (magic_pos_x, magic_pos_y) com relação ao centro do sprite e
+	com a ação sprite_magic_action quando a magia for acionada.
+	ATENÇÃO: O espaço após os nomes de arquivo são obrigatórios.
+- Em seguida, em NI linhas com os inputs. 
+	As linhas são de uma das seguintes formas:
+input=InputSet;Inputlevel;Action;magic
+	Nessas linhas, Inputlevel é o inputSet descrito acima (um número de 0 a 100). 
+	Se magic for >0, a magia de índice magic é acionada junto com o input.
+	InputSet é um dos inputsets acima, indicando vários conjuntos de
+	teclas a serem acionadas em sequência (uma sequência de até 7 conjuntos de
+	até 32 teclas)
+********************************
+----------------------------------------------------
+	2 - Arquivo de nível
+Define um nível onde os personagens lutam. Esse nível será composto nessa
+versão por uma imagem de fundo e pelas posições iniciais de cada personagem.
+********************************
+Definição formal do arquivo:
+Linha 1: Versão do arquivo
+Linhas 2 a 10: reservado
+********************************
+Linha 11: resolução x do cenário em pixels
+Linha 12: resolução y do cenário em pixels
+Linha 13: Imagem de fundo
+Linha 14: tipo de blitting de imagem: 0=centrado com stretch, 1=lado a lado
+Linha 15: Nome do arquivo com extensão .mid, .wav ou .mp3, que será usado como
+	fundo musical.
+
+####################################################
+
+
+
+
+
+
+
+

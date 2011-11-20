@@ -1,0 +1,84 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: gfighter - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\mvalle\CONFIG~1\Temp\RSPC.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "WIN32_VOLATILE" /D "__CRYSTAL_SPACE__" /D "CS_DEBUG" /FR"gfighter___Win32_Debug/" /Fp"gfighter___Win32_Debug/gfighter.pch" /YX /Fo"gfighter___Win32_Debug/" /Fd"gfighter___Win32_Debug/" /FD /GZ /c 
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFAction.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFFrame.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\gfighter.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFInput.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFInputSet.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFLevel.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFLevLayer.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFSprite.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFState.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFTrajectory.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFTrajPoint.cpp"
+"E:\marcelo\projetos\Prog\C\gfighter\src\GFTrigger.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\mvalle\CONFIG~1\Temp\RSPC.tmp" 
+Creating temporary file "D:\DOCUME~1\mvalle\CONFIG~1\Temp\RSPD.tmp" with contents
+[
+libcsgfx_d.lib libcsutil_d.lib libcsgeom_d.lib libcsgfx_d.lib libcstool_d.lib libcsws_d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"gfighter___Win32_Debug/gfighter.pdb" /map:"gfighter___Win32_Debug/gfighter.map" /debug /machine:I386 /out:"bin/gfighter.exe" /pdbtype:sept 
+.\gfighter___Win32_Debug\GFAction.obj
+.\gfighter___Win32_Debug\GFFrame.obj
+.\gfighter___Win32_Debug\gfighter.obj
+.\gfighter___Win32_Debug\GFInput.obj
+.\gfighter___Win32_Debug\GFInputSet.obj
+.\gfighter___Win32_Debug\GFLevel.obj
+.\gfighter___Win32_Debug\GFLevLayer.obj
+.\gfighter___Win32_Debug\GFSprite.obj
+.\gfighter___Win32_Debug\GFState.obj
+.\gfighter___Win32_Debug\GFTrajectory.obj
+.\gfighter___Win32_Debug\GFTrajPoint.obj
+.\gfighter___Win32_Debug\GFTrigger.obj
+]
+Creating command line "link.exe @D:\DOCUME~1\mvalle\CONFIG~1\Temp\RSPD.tmp"
+<h3>Output Window</h3>
+Compiling...
+GFAction.cpp
+GFFrame.cpp
+gfighter.cpp
+GFInput.cpp
+GFInputSet.cpp
+GFLevel.cpp
+GFLevLayer.cpp
+GFSprite.cpp
+GFState.cpp
+GFTrajectory.cpp
+GFTrajPoint.cpp
+GFTrigger.cpp
+Linking...
+LINK : warning LNK4098: defaultlib "MSVCRTD" conflicts with use of other libs; use /NODEFAULTLIB:library
+Creating temporary file "D:\DOCUME~1\mvalle\CONFIG~1\Temp\RSPF.tmp" with contents
+[
+/nologo /o"gfighter___Win32_Debug/gfighter.bsc" 
+.\gfighter___Win32_Debug\GFAction.sbr
+.\gfighter___Win32_Debug\GFFrame.sbr
+.\gfighter___Win32_Debug\gfighter.sbr
+.\gfighter___Win32_Debug\GFInput.sbr
+.\gfighter___Win32_Debug\GFInputSet.sbr
+.\gfighter___Win32_Debug\GFLevel.sbr
+.\gfighter___Win32_Debug\GFLevLayer.sbr
+.\gfighter___Win32_Debug\GFSprite.sbr
+.\gfighter___Win32_Debug\GFState.sbr
+.\gfighter___Win32_Debug\GFTrajectory.sbr
+.\gfighter___Win32_Debug\GFTrajPoint.sbr
+.\gfighter___Win32_Debug\GFTrigger.sbr]
+Creating command line "bscmake.exe @D:\DOCUME~1\mvalle\CONFIG~1\Temp\RSPF.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+gfighter.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

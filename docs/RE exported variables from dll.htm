@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://sources.redhat.com/ml/cygwin/1997-06/msg00352.html -->
+<!-- MHonArc v2.4.4 --><!--X-Subject: RE: exported variables from dll --><!--X-From-R13: Qbyva Brgref <pbyvaNoveq.sh.vf.fntn&#45;h.np.wc> --><!--X-Date: Sat, 14 Jun 1997 20:22:12 &#45;0700 (PDT) --><!--X-Message-Id: 01BC7986.94EA68A0@gbird0 --><!--X-Content-Type: text/plain --><!--X-Head-End--><HTML><HEAD><TITLE>RE: exported variables from dll</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1479" name=GENERATOR></HEAD>
+<BODY><!--X-Body-Begin--><!--X-User-Header--><!--htdig_noindex-->
+<P>This is the mail archive of the <TT>cygwin@sourceware.cygnus.com</TT> mailing 
+list for the <A href="http://sources.redhat.com/cygwin/">Cygwin project</A>. <!--/htdig_noindex--><!--X-User-Header-End--><!--X-TopPNI--><!--htdig_noindex-->
+<HR>
+
+<TABLE border=0>
+  <TBODY>
+  <TR>
+    <TH align=left>Index Nav:</TH>
+    <TD colSpan=2>[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/index.html#00352">Date&nbsp;Index</A>] 
+      [<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/subjects.html#00352">Subject&nbsp;Index</A>] 
+      [<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/authors.html#00352">Author&nbsp;Index</A>] 
+      [<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/threads.html#00352">Thread&nbsp;Index</A>] 
+    </TD></TR>
+  <TR>
+    <TH align=left>Message Nav:</TH>
+    <TD>[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00346.html">Date&nbsp;Prev</A>]&nbsp;[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00345.html">Date&nbsp;Next</A>]</TD>
+    <TD>[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00346.html">Thread&nbsp;Prev</A>]&nbsp;[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00274.html">Thread&nbsp;Next</A>]</TD></TR></TBODY></TABLE><!--/htdig_noindex--><!--X-TopPNI-End--><!--X-MsgBody--><!--X-Subject-Header-Begin-->
+<H1>RE: exported variables from dll</H1><!--X-Subject-Header-End--><!--X-Head-of-Message-->
+<UL>
+  <LI><EM>To</EM>: "'Philippe GIACINTI'" &lt;giac at dalim dot de&gt; 
+  <LI><EM>Subject</EM>: RE: exported variables from dll 
+  <LI><EM>From</EM>: Colin Peters &lt;colin at bird dot fu dot is dot saga-u dot 
+  ac dot jp&gt; 
+  <LI><EM>Date</EM>: Sun, 15 Jun 1997 12:20:57 +0900 
+  <LI><EM>Cc</EM>: "'GNU-Win32'" &lt;gnu-win32 at cygnus dot com&gt; </LI></UL><!--X-Head-of-Message-End--><!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End--><!--X-Body-of-Message--><PRE>Philippe GIACINTI[SMTP:giac@dalim.de] wrote:
+&gt;I wish to define some variables in a dll and use them in another, on Unix I
+&gt;have no problems: the variable is defined global in one .cc and extern in
+&gt;another.
+&gt;If I use the same code in Cygwin32, it seems that each dll have a local copy of
+&gt;this variable ( ie: the addresses are different ).
+&gt;I tried to do this with VisualC++, and it works if I use the directive
+&gt;DllImport instead of extern.
+&gt;
+&gt;( in fact I have this problem in a dll which uses stdout, I found that
+&gt;"_impure_ptr" was correctly initialized in main, but was null in the dll )
+&gt;
+&gt;I'm really new in Cygwin32 and Windows environment, and I think (hope) it comes
+&gt;from my ignorance.
+
+It's a little hard to be sure from the information you have given, but I
+think your problem is related to the way dlltool builds import libraries.
+Basically lets say you have a DLL with a function "Foo" and a variable
+"bar". Your .def file will look something like this:
+
+EXPORTS
+ Foo
+ bar
+
+First thing you should notice: dlltool cannot tell that one of these is
+a function and the other is a variable. Dlltool builds a import library
+basically consisting of functions which do something like this:
+
+Foo ()
+{
+ return __imp_Foo();
+}
+
+bar ()
+{
+ return __imp_bar();
+}
+
+__imp_Foo and __imp_bar are symbols in a special table that gets filled
+in with the *real* addresses of the Foo and bar symbols when the DLL that
+contains them is loaded at run time.
+
+So when you call Foo, you are actually calling a thunk function statically
+linked into your own code, which effectively looks up the real address of
+the function you wanted and calls it (all the arguments just pass straight
+through).
+
+But what happens to the variable? Well, if you do something like this in
+your code:
+
+ x = bar;
+
+The symbol bar is defined and all that, but it's defined as a pointer to
+the *thunk function*! Thus, every dll or program that uses the bar
+variable will, indeed, have it's own copy, because they all have their
+own thunk. And, of course, that value will have absolutely nothing to
+do with what you wanted to do.
+
+In Visual C++ the __dllimport (or __dllexport, whatever) keyword tells
+the compiler directly that the given variable or function is imported
+from a DLL. The compiler can generate the appropriate code directly
+where any reference is made to the given symbol, whether it is a
+function call or variable reference. Thus, no thunks are necessary
+and variable references are correct. You also don't need a .def file
+or an import library at all.
+
+Gcc, as far as I know, does not have a mechanism for doing this (yet), so
+we have to use dlltool to fool the compiler into putting our function
+calls through a thunk. Unfortunately this messes up variable references.
+
+Here is a workaround that I use with the current system:
+
+  In your header file do something like this:
+
+     #ifdef DEFINING_DLL
+     int bar;
+     #else
+     extern int* __imp_bar;
+     #define bar (*__imp_bar)
+     #endif
+
+  This way when DEFINING_DLL is set (which you only do in the DLL
+  which actually contains the variable) you get the normal int
+  variable. In the other code which uses the variable any
+  reference to bar becomes an indirect reference through the
+  __imp_bar variable created by dlltool.
+
+
+This is a temporary solution of course. What *should* happen (IMHO)
+is that gcc should learn how to do that itself and generate the
+appropriate code for shared libraries (I would have thought they
+would do it for UNIX shared libraries anyway). We could then do
+away with dlltool and .def files altogether. Instead your headers
+might look like this:
+
+  #ifdef DEFINING_DLL
+  #define DLLSYMBOL __attribute__(__dllexport__);
+  #else
+  #define DLLSYMBOL __attribute__(__dllimport__);
+  #endif
+
+  int DLLSYMBOL Foo();
+  int DLLSYMBOL bar;
+
+or possibly even this:
+
+  __dllexport int Foo();
+  __dllexport int bar;
+
+As a special wish list item I would like to be able to do something
+like this in C++:
+
+__dllexport class MyClass
+{
+ ...
+};
+
+And have all the member functions (and static variables) of the
+class reside in a dll. This would save me the hassle of generating
+.def files for C++ classes, and the worries about the internals
+of virtual functions and inheritance from the exported class (and
+run time type information too, if supported). If this ever happens
+I will be an extremely happy camper. :)
+
+(By the way, I am not really suggesting syntax here, because I
+might have the attribute thing wrong, but I do think it would
+be nice to make it so that, either with a #define or directly,
+headers using MSVC __dllexport type constructs could be used
+with GCC.)
+
+As I said though, this is not yet the case, so you have to
+resort to the above trickery, which is ugly and dependent on
+the undocumented inner workings of dlltool.
+
+Would someone else on the list like to take up the question about
+_impure_ptr? I pretty much only use Mingw32, which has it's own
+DLL startup code that initializes stdout and so on (and doesn't
+use _impure_ptr), so I'm not in a position to know exactly what
+the problem there is.
+
+Anyway, good luck,
+Colin.
+
+-- Colin Peters - colin@bird.fu.is.saga-u.ac.jp
+-- Saga University Dept. of Information Science
+-- <A href="http://www.fu.is.saga-u.ac.jp/~colin/index.html">http://www.fu.is.saga-u.ac.jp/~colin/index.html</A>
+-- <A href="http://www.geocities.com/Tokyo/Towers/6162/">http://www.geocities.com/Tokyo/Towers/6162/</A>
+
+-
+For help on using this list (especially unsubscribing), send a message to
+"gnu-win32-request@cygnus.com" with one line of text: "help".
+
+</PRE><!--X-Body-of-Message-End--><!--X-MsgBody-End--><!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End--><!--X-References--><!--X-References-End--><!--X-BotPNI--><!--htdig_noindex-->
+<TABLE border=0>
+  <TBODY>
+  <TR>
+    <TH align=left>Index Nav:</TH>
+    <TD colSpan=2>[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/index.html#00352">Date&nbsp;Index</A>] 
+      [<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/subjects.html#00352">Subject&nbsp;Index</A>] 
+      [<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/authors.html#00352">Author&nbsp;Index</A>] 
+      [<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/threads.html#00352">Thread&nbsp;Index</A>] 
+    </TD></TR>
+  <TR>
+    <TH align=left>Message Nav:</TH>
+    <TD>[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00346.html">Date&nbsp;Prev</A>]&nbsp;[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00345.html">Date&nbsp;Next</A>]</TD>
+    <TD>[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00346.html">Thread&nbsp;Prev</A>]&nbsp;[<A 
+      href="http://sources.redhat.com/ml/cygwin/1997-06/msg00274.html">Thread&nbsp;Next</A>]</TD></TR></TBODY></TABLE><!--/htdig_noindex--><!--X-BotPNI-End--><!--X-User-Footer--><!--X-User-Footer-End--></BODY></HTML>
